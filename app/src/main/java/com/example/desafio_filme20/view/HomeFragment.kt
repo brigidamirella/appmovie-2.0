@@ -65,15 +65,9 @@ class HomeFragment : Fragment() {
         homeViewModel.getMovies()
     }
 
-
-    /*
-    TODO - 3
-      Não se faz necessário limpar as instâncias da ViewModel(viewModelStore.clear()) ao destruir essa view até porque ela como uma view anterior
-      faltou o _binding = null
-     */
     override fun onDestroyView() {
         super.onDestroyView()
-        viewModelStore.clear()
+        _binding = null
     }
 
     private fun observe() {

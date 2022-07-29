@@ -4,6 +4,7 @@ plugins {
     id 'kotlin-kapt'
     id 'kotlin-android-extensions'
     id 'androidx.navigation.safeargs.kotlin'
+    id 'com.google.secrets_gradle_plugin' version '0.4'
 }
 
 android {
@@ -21,11 +22,17 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        def localPropertiesFile = rootProject.file("local.properties")
+        def localProperties = new Properties()
+        localProperties.load(new FileInputStream(localPropertiesFile))
+
+        buildConfigField "String", "API_KEY", localProperties['apiKey']
     }
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }

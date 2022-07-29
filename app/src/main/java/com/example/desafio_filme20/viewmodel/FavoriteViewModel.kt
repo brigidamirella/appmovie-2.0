@@ -11,11 +11,6 @@ import io.reactivex.schedulers.Schedulers
 
 class FavoriteViewModel(application: Application) : AndroidViewModel(application) {
 
-
-    /* TODO 5
-        Limpar o reactive(Composite Disposable) após a operação chamada acabar de ser executada para evitar leaks
-     */
-
     private val repository = MovieRepository(application)
     private val listMovie = MutableLiveData<List<Film>>()
     val reactive = CompositeDisposable()
@@ -23,7 +18,10 @@ class FavoriteViewModel(application: Application) : AndroidViewModel(application
 
     fun removeFromFavorites(film: Film) {
         film.favorite = false
-        reactive.add(repository.delete(film).subscribe {})
+        reactive.add(
+            repository
+                .delete(film).subscribe()
+        )
     }
 
     fun favoriteList() {
@@ -39,4 +37,8 @@ class FavoriteViewModel(application: Application) : AndroidViewModel(application
         )
     }
 
+    override fun onCleared() {
+        super.onCleared()
+        reactive.clear()
+    }
 }
