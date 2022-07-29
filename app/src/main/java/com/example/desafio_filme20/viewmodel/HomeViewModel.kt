@@ -10,6 +10,12 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
 class HomeViewModel(application: Application) : AndroidViewModel(application) {
+
+    /* TODO 6
+        Limpar o reactive(Composite Disposable) após a operação chamada acabar de ser executada para evitar leaks
+     */
+
+
     private val repository = MovieRepository(application)
     private val listMovie = MutableLiveData<List<Film>>()
     var reactive = CompositeDisposable()

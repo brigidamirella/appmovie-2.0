@@ -7,13 +7,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.desafio_filme20.R
-import com.example.desafio_filme20.databinding.FragmentHomeBinding
-import com.example.desafio_filme20.util.listeners.MovieListener
-import com.example.desafio_filme20.model.Film
 import com.example.desafio_filme20.adapters.MovieAdapter
+import com.example.desafio_filme20.databinding.FragmentHomeBinding
+import com.example.desafio_filme20.model.Film
+import com.example.desafio_filme20.util.listeners.MovieListener
 import com.example.desafio_filme20.viewmodel.HomeViewModel
 
 class HomeFragment : Fragment() {
@@ -28,18 +27,21 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         homeViewModel =
             ViewModelProvider(this).get(HomeViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_home, container, false)
+
+
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         binding.rvListFilms.layoutManager = LinearLayoutManager(context)
         binding.rvListFilms.adapter = adapter
+
+        //Poderia ser feito com High order function.
         listener = object : MovieListener {
             override fun onListClick(filme: Film) {
                 val directions =
                     HomeFragmentDirections.navMovieToNavDetails(filme)
-                view?.findNavController()?.navigate(directions)
+                findNavController().navigate(directions)
             }
 
             override fun onFavorite(filme: Film) {
@@ -63,6 +65,12 @@ class HomeFragment : Fragment() {
         homeViewModel.getMovies()
     }
 
+
+    /*
+    TODO - 3
+      Não se faz necessário limpar as instâncias da ViewModel(viewModelStore.clear()) ao destruir essa view até porque ela como uma view anterior
+      faltou o _binding = null
+     */
     override fun onDestroyView() {
         super.onDestroyView()
         viewModelStore.clear()

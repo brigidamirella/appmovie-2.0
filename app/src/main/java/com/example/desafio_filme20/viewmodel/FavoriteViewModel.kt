@@ -11,6 +11,11 @@ import io.reactivex.schedulers.Schedulers
 
 class FavoriteViewModel(application: Application) : AndroidViewModel(application) {
 
+
+    /* TODO 5
+        Limpar o reactive(Composite Disposable) após a operação chamada acabar de ser executada para evitar leaks
+     */
+
     private val repository = MovieRepository(application)
     private val listMovie = MutableLiveData<List<Film>>()
     val reactive = CompositeDisposable()
