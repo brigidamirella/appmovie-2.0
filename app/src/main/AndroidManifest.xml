@@ -9,7 +9,7 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher_foreground"
         android:label="The movies db"
-        android:theme="@style/Theme.MaterialComponents.DayNight">
+        android:theme="@style/Theme.AppTheme">
         <activity
             android:name=".MainActivity"
             android:label="The Movies Db"

@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
 
     private val appBarConfiguration = AppBarConfiguration(
         setOf(
-            R.id.nav_movie, R.id.nav_favorites
+            R.id.nav_movie, R.id.nav_favorites, R.id.nav_top_rated
         )
     )
     private lateinit var navController: NavController
@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity() {
 
         setupActionBarWithNavController(navController, appBarConfiguration)
         binding.apply {
+
             navView.setupWithNavController(navController)
         }
     }
@@ -32,5 +33,6 @@ class MainActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp() || super.onSupportNavigateUp()
     }
+
 
 }

@@ -22,6 +22,9 @@ class MovieRepository(context: Context) {
         return client.getPopularMovies()
     }
 
+    fun getTopRated(): Observable<MovieResult> {
+        return client.getTopRatedMovies()
+    }
     fun delete(film: Film): Completable {
         return Completable.create {
             try {

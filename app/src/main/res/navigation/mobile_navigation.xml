@@ -8,10 +8,23 @@
     <fragment
         android:id="@+id/nav_movie"
         android:name="com.example.desafio_filme20.view.HomeFragment"
-        android:label="The Movies DB"
-        tools:layout="@layout/fragment_home" >
+        android:label="Filmes Populares"
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/nav_movie_to_nav_details"
+            app:destination="@id/nav_details" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_top_rated"
+        android:name="com.example.desafio_filme20.view.TopRatedFragment"
+android:label="Melhor Avaliados"
+        tools:layout="@layout/fragment_top_rated"
+        >
+
+
+        <action
+            android:id="@+id/action_nav_top_rated_to_nav_details"
             app:destination="@id/nav_details" />
     </fragment>
 
@@ -19,7 +32,7 @@
         android:id="@+id/nav_favorites"
         android:name="com.example.desafio_filme20.view.FavoriteFragment"
         android:label="Favoritos"
-        tools:layout="@layout/fragment_favorites" >
+        tools:layout="@layout/fragment_favorites">
         <action
             android:id="@+id/nav_favorites_to_nav_details"
             app:destination="@id/nav_details" />
@@ -29,7 +42,7 @@
         android:id="@+id/nav_details"
         android:name="com.example.desafio_filme20.view.DetailsFragment"
         android:label="Descrição"
-        tools:layout="@layout/fragment_details" >
+        tools:layout="@layout/fragment_details">
         <argument
             android:name="filme"
             app:argType="com.example.desafio_filme20.model.Film" />

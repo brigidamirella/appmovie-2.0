@@ -12,6 +12,11 @@ interface MovieService {
         @Query("api_key") apiKey: String = BuildConfig.apiKey
     ): Observable<MovieResult>
 
+    @GET("top_rated")
+    fun getTopRatedMovies(
+        @Query("api_key") apiKey: String = BuildConfig.apiKey
+    ): Observable<MovieResult>
+
     @GET("search/movie")
     suspend fun searchMovies(
         @Query("api_key") apiKey: String = BuildConfig.apiKey,
