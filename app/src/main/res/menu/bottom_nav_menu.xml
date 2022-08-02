@@ -3,9 +3,14 @@
     <item
         android:id="@+id/nav_movie"
         android:icon="@drawable/ic_movies"
-        android:title="Filmes" />
+        android:title="Populares" />
+    <item
+        android:id="@+id/nav_top_rated"
+        android:icon="@drawable/ic_baseline_stars_24"
+        android:title="Melhor Avaliados"/>
     <item
         android:id="@+id/nav_favorites"
         android:icon="@drawable/ic_baseline_favorite_24"
         android:title="Favoritos" />
+
 </menu>
