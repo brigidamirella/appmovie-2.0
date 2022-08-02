@@ -8,6 +8,7 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
 class DetailsViewModel(application: Application) : AndroidViewModel(application) {
+
     private val repository = MovieRepository(application)
     var reactive = CompositeDisposable()
 
@@ -23,7 +24,13 @@ class DetailsViewModel(application: Application) : AndroidViewModel(application)
 
     fun removeFromFavorites(film: Film) {
         film.favorite = false
-        reactive.remove(repository.delete(film).subscribe {})
+        reactive.remove(repository.delete(film).subscribe {
+            reactive.clear()
+        })
     }
 
+    override fun onCleared() {
+        super.onCleared()
+        reactive.clear()
+    }
 }

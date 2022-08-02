@@ -10,6 +10,7 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
 class HomeViewModel(application: Application) : AndroidViewModel(application) {
+
     private val repository = MovieRepository(application)
     private val listMovie = MutableLiveData<List<Film>>()
     var reactive = CompositeDisposable()
@@ -30,7 +31,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
     fun removeFromFavorites(film: Film) {
         film.favorite = false
-        reactive.add(repository.delete(film).subscribe {})
+        reactive.add(repository.delete(film).subscribe {reactive.clear()})
     }
 
     fun getMovies() {
@@ -46,5 +47,8 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         )
     }
 
-
+    override fun onCleared() {
+        super.onCleared()
+        reactive.clear()
+    }
 }

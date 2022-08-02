@@ -18,7 +18,10 @@ class FavoriteViewModel(application: Application) : AndroidViewModel(application
 
     fun removeFromFavorites(film: Film) {
         film.favorite = false
-        reactive.add(repository.delete(film).subscribe {})
+        reactive.add(
+            repository
+                .delete(film).subscribe()
+        )
     }
 
     fun favoriteList() {
@@ -34,4 +37,8 @@ class FavoriteViewModel(application: Application) : AndroidViewModel(application
         )
     }
 
+    override fun onCleared() {
+        super.onCleared()
+        reactive.clear()
+    }
 }
