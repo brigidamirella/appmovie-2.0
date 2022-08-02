@@ -1,4 +1,4 @@
-#app com a api The Movies DB
+# App com a api The Movies DB
 
 Defina a key da API https://developers.themoviedb.org/3 no local.properties <br />
 apiKey = "YOUR_KEY"
