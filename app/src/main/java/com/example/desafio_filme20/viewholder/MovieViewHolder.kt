@@ -3,13 +3,13 @@ package com.example.desafio_filme20.viewholder
 import android.graphics.Color
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.desafio_filme20.R
 import com.example.desafio_filme20.databinding.RowListFilmsBinding
+import com.example.desafio_filme20.model.Film
 import com.example.desafio_filme20.util.constants.MovieConstants
 import com.example.desafio_filme20.util.listeners.MovieListener
-import com.example.desafio_filme20.model.Film
 import com.google.android.material.snackbar.Snackbar
-import com.squareup.picasso.Picasso
 
 class MovieViewHolder(
     private val binding: RowListFilmsBinding,
@@ -23,7 +23,11 @@ class MovieViewHolder(
         binding.movieTitle.text = film.title
         binding.movieReleaseDate.text = film.release_date
         binding.txtRatingCount.text = film.vote_average.toString()
-        Picasso.get().load(baseUrlFilme + film.poster_path).into(binding.moviePoster)
+        Glide.with(itemView)
+            .load(baseUrlFilme + film.poster_path)
+            .centerCrop()
+            .into(binding.moviePoster)
+
         if (film.favorite) {
             binding.btnFavoriteFilm.setImageResource(R.drawable.ic_favorite_red)
         } else {

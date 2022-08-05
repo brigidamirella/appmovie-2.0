@@ -8,13 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.bumptech.glide.Glide
 import com.example.desafio_filme20.R
 import com.example.desafio_filme20.databinding.FragmentDetailsBinding
 import com.example.desafio_filme20.model.Film
 import com.example.desafio_filme20.util.constants.MovieConstants
 import com.example.desafio_filme20.viewmodel.DetailsViewModel
 import com.google.android.material.snackbar.Snackbar
-import com.squareup.picasso.Picasso
 
 
 class DetailsFragment : Fragment() {
@@ -53,8 +53,10 @@ class DetailsFragment : Fragment() {
         binding.movieReleaseDate.text = "Pub: ${film.release_date}"
         binding.txtOverView.text = film.overview
         binding.txtRatingCount.text = film.vote_average.toString()
-        Picasso.get().load(baseUrlFilme + film.backdrop_path).into(binding.moviePoster)
-
+        Glide.with(this)
+            .load(baseUrlFilme + film.backdrop_path)
+            .centerCrop()
+            .into(binding.moviePoster)
         if (film.favorite) {
             binding.iconFavorite.setImageResource(R.drawable.ic_favorite_red)
         } else {

@@ -35,8 +35,6 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         binding.rvListFilms.layoutManager = LinearLayoutManager(context)
         binding.rvListFilms.adapter = adapter
-
-        //Poderia ser feito com High order function.
         listener = object : MovieListener {
             override fun onListClick(filme: Film) {
                 val directions =
