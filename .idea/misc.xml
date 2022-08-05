@@ -7,7 +7,9 @@
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
         <entry key="app/src/main/res/drawable-v24/ic_search.xml" value="0.2835" />
         <entry key="app/src/main/res/drawable-v24/ic_star_rate_24.xml" value="0.115" />
+        <entry key="app/src/main/res/drawable-xxhdpi/ic_star_rate_24.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_baseline_favorite_24.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_baseline_stars_24.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_favorite.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_favorite_black.xml" value="0.1" />
